@@ -1,0 +1,366 @@
+<html>
+    <head>
+        <title>HTML and CSS QNA</title>
+        <style>
+            .body{
+                background-color: lightslategray;
+            }
+
+            .container{
+                display: inline-block;
+                margin-top: 10%;
+                margin-left: 20%;
+                height: 300px;
+                width: 60%;
+                border-style: double;
+                border-color: maroon;
+                border-radius: 5px;
+                text-align: center;
+                font-weight: bold;
+                background-color: lightseagreen; 
+                color: darkmagenta;
+            }
+
+            .head{
+                color: blue;
+            }
+
+            .result{
+                display: inline-block;
+                position: relative;
+                height: 45px;
+                background-color: lightgoldenrodyellow;
+                font-weight: bold;
+                width: 100%;
+             }
+
+            .question-block{
+                display: inline-block;
+                position: relative;
+                height: 45px;
+                background-color: lightcoral;
+                font-weight: bold;
+                color: darkred;
+                width: 100%;
+ 
+            }
+
+            .option-block{
+                display: inline-block;
+                position: relative;
+                background-color: lightblue;
+                font-weight: bold;
+                color: darkcyan;
+                width: 100%;
+                height: 50px;
+                
+            }
+
+            .option{
+                display: inline-block;
+                background-color: lightseagreen;
+                height: 35px;
+                font-weight: bold;
+                color: darkorange;
+                               
+            }
+
+            .nav{
+                display: inline-block;
+                position: relative;
+                background-color: darkolivegreen;
+                font-weight: bold;
+                color: darkgoldenrod;
+                width: 100%;
+                height: 50px;
+ 
+            }
+
+            .back{
+                background-color: red;
+                font-weight: 300;
+                color: black;
+             }
+
+            .evaluate{
+                background-color: lightskyblue;
+                font-weight: 300;
+                color: black;
+
+            }
+
+            .next{
+                background-color: blue;
+                font-weight: 300;
+                color: black;
+            }
+
+        </style>
+    </head>
+    <body class="body">
+        <div class="container">
+            <h3 class="head">Start your test</h3>
+            <div class="result">Solution</div><br>
+            <div class="question-block" id="question">Questions will display here</div><br>
+            <div class="option-block">
+                <button class="option" id="op1">Option1</button>
+                <button class="option" id="op2">Option2</button>
+                <button class="option" id="op3">Option4</button>
+                <button class="option" id="op4">Option4</button>
+            </div><br>
+            <div class="nav">
+                <button class="back"><<-back</button>
+                <button class="evaluate">Evaluate</button>
+                <button class="next">Next->></button>
+            </div><br>
+        </div>
+
+        <script>
+            const Questions = 
+            [
+                {
+                    id: 0,
+                    q: "Choose the correct HTML element for the largest heading:",
+                    a:[
+                        {text:"<h6>",isCorrect:false},
+                        {text:"<head>",isCorrect:false},
+                        {text:"<heading>",isCorrect:false},
+                        {text:"<h1>",isCorrect:true}
+                    ]
+                },
+
+                {
+                    id: 1,
+                    q:"Which character is used to indicate an end tag?",
+                    a:[
+                        {text:"*",isCorrect:false},
+                        {text:"/",isCorrect:true},
+                        {text:"<",isCorrect:false},
+                        {text:">",isCorrect:false}
+                      ]
+                      
+                },
+                        
+                {
+                    id: 2,
+                    q:"Which tag is used when creating a list with a specific order (by default, will show up as a numbered list)?",
+                    a:[
+                        {text:"<dl>",isCorrect:false},
+                        {text:"<ul>",isCorrect:false},
+                        {text:"<list>",isCorrect:false},
+                        {text:"<ol>",isCorrect:true}
+
+                    ]
+                },
+
+                {
+                    id: 3,
+                    q:"What does HTML stand for?",
+                    a:[
+                        {text:"Hyperlinks and Text Markup Language",isCorrect:false},
+                        {text:"Hyper Text Markup Language",isCorrect:true},
+                        {text:"Home Tool Markup Language",isCorrect:false},
+                        {text:"None of the above",isCorrect:false}
+                    ]
+                },
+
+                {
+                    id: 4,
+                    q:"What is the correct HTML tag for creating a hyperlink?",
+                    a:[
+                        {text:"<a></a>",isCorrect:false},
+                        {text:"<a href=",isCorrect:true},
+                        {text:"<a name=",isCorrect:false},
+                        {text:"<a url=",isCorrect:false}
+                        
+                    ]
+                },
+
+                {
+                    id: 5,
+                    q:"Which tag would you generally use to make a list of items that have no particular order (by default, will show up as a bullet list)?",
+                    a:[
+                        {text:"<dl>",isCorrect:false},
+                        {text:"<ul>",isCorrect:true},
+                        {text:"<list>",isCorrect:false},
+                        {text:"<ol>",isCorrect:false}
+                    ]
+                },
+
+                {
+                    id: 6,
+                    q:"Which HTML element defines the title of a document?",
+                    a:[
+                        {text:"<meta>",isCorrect:false},
+                        {text:"<head>",isCorrect:false},
+                        {text:"<title>",isCorrect:true},
+                        {text:"<h1>",isCorrect:false}
+                        
+                    ]
+                },
+
+                {
+                    id: 7,
+                    q:"Where in an HTML document is the correct place to include CSS in your HTML?",
+                    a:[
+                       {text:"<body> section",isCorrect:false}, 
+                       {text:"top of document",isCorrect:false},
+                       {text:"<head> section",isCorrect:true},
+                       {text:"end of document",isCorrect:false}
+                    ]
+                },
+
+                {
+                    id:8,
+                    q:"If you want to use a background color for your entire webpage, which tag should you select in your CSS?",
+                    a:[
+                        {text:"<body>",isCorrect:true},
+                        {text:"<html>",isCorrect:false},
+                        {text:"<h1>",isCorrect:false},
+                        {text:"<p>",isCorrect:false}
+
+                    ]
+                },
+
+                {
+                    id:9,
+                    q:"What does CSS stand for?",
+                    a:[
+                        {text:"Creative style sheet",isCorrect:false},
+                        {text:"Computer style sheet",isCorrect:false},
+                        {text:"Cascading style sheet",isCorrect:true},
+                        {text:"Colorful style sheet",isCorrect:false}                   
+                     ]
+                }
+
+
+            ]
+
+            //set start
+            var start = true;
+
+            //Iterate
+            function iterate(id) {
+                // Getting the result display section
+                var result = document.getElementsByClassName("result");
+                result[0].innerText = "";
+
+                // Getting the question
+                const question = document.getElementById("question");
+
+                 // Setting the question text
+                question.innerText = Questions[id].q;
+
+                // Getting the options
+                const op1 = document.getElementById('op1');
+                const op2 = document.getElementById('op2');
+                const op3 = document.getElementById('op3');
+                const op4 = document.getElementById('op4');
+
+
+                // Providing option text 
+                op1.innerText = Questions[id].a[0].text;
+                op2.innerText = Questions[id].a[1].text;
+                op3.innerText = Questions[id].a[2].text;
+                op4.innerText = Questions[id].a[3].text;
+                
+
+                 // Providing the true or false value to the options
+                op1.value = Questions[id].a[0].isCorrect;
+                op2.value = Questions[id].a[1].isCorrect;
+                op3.value = Questions[id].a[2].isCorrect;
+                op4.value = Questions[id].a[3].isCorrect;
+
+
+                var selected = "";
+  
+                // Show selection for op1
+                op1.addEventListener("click", () => {
+                    op1.style.backgroundColor = "lightblue";
+                    op2.style.backgroundColor = "lightskyblue";
+                    op3.style.backgroundColor = "lightskyblue";
+                    op4.style.backgroundColor = "lightskyblue";
+                    selected = op1.value;
+                })
+
+                // Show selection for op2
+                op2.addEventListener("click", () => {
+                    op1.style.backgroundColor = "lightskyblue";
+                    op2.style.backgroundColor = "green";
+                    op3.style.backgroundColor = "lightskyblue";
+                    op4.style.backgroundColor = "lightskyblue";
+                    selected = op2.value;
+                })
+
+                // Show selection for op3
+                op3.addEventListener("click", () => {
+                    op1.style.backgroundColor = "lightskyblue";
+                    op2.style.backgroundColor = "lightskyblue";
+                    op3.style.backgroundColor = "lightgreen";
+                    op4.style.backgroundColor = "lightskyblue";
+                    selected = op3.value;
+                })
+            
+                // Show selection for op4
+                op4.addEventListener("click", () => {
+                    op1.style.backgroundColor = "lightskyblue";
+                    op2.style.backgroundColor = "lightskyblue";
+                    op3.style.backgroundColor = "lightskyblue";
+                    op4.style.backgroundColor = "lightgreen";
+                    selected = op4.value;
+                })
+
+                
+                // Grabbing the evaluate button
+                const evaluate = document.getElementsByClassName("evaluate");
+            
+                // Evaluate method
+                evaluate[0].addEventListener("click", () => {
+                    if (selected == "true") {
+                        result[0].innerHTML = "Correct Answer";
+                        result[0].style.color = "green";
+                    } else {
+                        result[0].innerHTML = "Wrong Answer";
+                        result[0].style.color = "red";
+                    }
+
+                })
+
+            }
+
+            if (start) {iterate("0");}
+
+            // Next button and method
+            const next = document.getElementsByClassName('next')[0];
+            var id = 0;
+
+            next.addEventListener("click", () => 
+            {
+                start = false;
+                if (id <= 9)
+                {
+                    id++;
+                    iterate(id);
+                    console.log(id);
+                }
+            })
+
+            const back = document.getElementsByClassName('back')[0];
+            var id = 0;
+
+            back.addEventListener("click", () => 
+            {
+                start = true;
+                if (id > 0)
+                {
+                    id--;
+                    iterate(id);
+                    console.log(id);
+                }
+            })
+
+
+
+        </script>
+    </body>
+</html>
